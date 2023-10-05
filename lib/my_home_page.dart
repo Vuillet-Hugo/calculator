@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import '_main_title.dart';
+import 'main_title.dart';
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => MyHomePageState();
 }
-
-
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int counterBtn = 0;
+  
 
   void _incrementCounter() {
     setState(() {
-
+      counterBtn++;
       _counter=_counter+2;
     });
   }
@@ -30,12 +30,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: MainTitle(title: widget.title),
       ),
+      
       body: Center(
 
-        child: Column(
-
+        child:
+        
+        Column(
+          
           mainAxisAlignment: MainAxisAlignment.center,
+          
           children: <Widget>[
+            Text(
+              'Vous avez cliquez $counterBtn fois',
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [              
             Text(
               '$_counter'' + 2 =',
             ),
@@ -43,7 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
                (_counter + 2).toString(),
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-          ],
+          ],)
+           ],
+            
         ),
       ),
       floatingActionButton: FloatingActionButton(
